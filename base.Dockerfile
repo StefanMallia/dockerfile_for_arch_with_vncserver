@@ -1,6 +1,5 @@
-FROM archlinux
+FROM archlinux as arch-linux-base
 
-ARG vncpassword
 ARG archpassword
 
 RUN useradd -m -G wheel arch
@@ -24,12 +23,4 @@ RUN rm -rf /tmp/yay-build
 RUN userdel builduser 
 RUN pacman --noconfirm -R go
 
-RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc
-RUN mkdir ~/.vnc
-RUN printf "#!/bin/sh\nxrdb $HOME/.Xresources\nstartxfce4 &" | tee  ~/.vnc/xstartup
-RUN printf "geometry=2560x1440" | tee  ~/.vnc/config
-RUN chmod +x ~/.vnc/xstartup
-RUN echo ${vncpassword} | vncpasswd -f > ~/.vnc/passwd
-RUN chmod 600 ~/.vnc/passwd
-
-CMD ["vncserver", ":1"]
+CMD ["tail -f /dev/null"]

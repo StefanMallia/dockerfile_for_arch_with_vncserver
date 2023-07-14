@@ -1,2 +1,2 @@
-docker build --build-arg vncpassword=$1 --build-arg archpassword=$2 -t arch-vnc .
-
+docker build --file base.Dockerfile --build-arg archpassword=$1 -t arch-linux-base .
+docker build --file vnc.Dockerfile  --build-arg  vncpassword=$2 -t arch-linux-vnc .
