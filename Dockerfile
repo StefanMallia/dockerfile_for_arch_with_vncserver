@@ -21,6 +21,9 @@ RUN su - builduser -c "git clone https://aur.archlinux.org/yay.git /tmp/yay-buil
 RUN su - builduser -c "cd /tmp/yay-build/yay && makepkg -si --noconfirm"
 RUN rm -rf /tmp/yay-build
 
+RUN userdel builduser 
+RUN pacman --noconfirm -R go
+
 RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc
 RUN mkdir ~/.vnc
 RUN printf "#!/bin/sh\nxrdb $HOME/.Xresources\nstartxfce4 &" | tee  ~/.vnc/xstartup
@@ -29,8 +32,4 @@ RUN chmod +x ~/.vnc/xstartup
 RUN echo ${vncpassword} | vncpasswd -f > ~/.vnc/passwd
 RUN chmod 600 ~/.vnc/passwd
 
-RUN userdel builduser 
-RUN pacman --noconfirm -R go
-
 CMD ["vncserver", ":1"]
-
