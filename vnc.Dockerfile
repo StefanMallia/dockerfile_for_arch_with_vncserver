@@ -2,7 +2,9 @@ FROM arch-linux-base as arch-linux-vnc
 
 ARG vncpassword
 
-RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc
+RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc firefox
+
+USER arch
 RUN mkdir ~/.vnc
 RUN printf "#!/bin/sh\nxrdb $HOME/.Xresources\nstartxfce4 &" | tee  ~/.vnc/xstartup
 RUN printf "geometry=2560x1440" | tee  ~/.vnc/config

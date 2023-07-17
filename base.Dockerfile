@@ -28,5 +28,6 @@ RUN sed -i -e 's|builduser ALL=(ALL) NOPASSWD: /usr/bin/makepkg||g' /etc/sudoers
 RUN sed -i -e 's|builduser ALL=(ALL) NOPASSWD: /usr/bin/pacman||g' /etc/sudoers
 RUN userdel builduser 
 RUN pacman --noconfirm -R go
+WORKDIR /home/arch
 
 CMD ["tail -f /dev/null"]
