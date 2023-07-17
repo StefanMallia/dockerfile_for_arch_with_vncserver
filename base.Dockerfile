@@ -10,9 +10,9 @@ RUN echo 'arch ALL=(ALL) ALL' >> /etc/sudoers
 RUN pacman-key --init
 RUN pacman -Sy archlinux-keyring --noconfirm
 RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm xorg-server xfce4
+RUN pacman -Syu --noconfirm neovim
 
-RUN pacman -S --noconfirm base-devel git extra/go
+RUN pacman -Sy --noconfirm base-devel git extra/go
 RUN git clone https://aur.archlinux.org/yay.git /tmp/yay
 
 RUN useradd builduser -m
