@@ -30,4 +30,4 @@ RUN userdel builduser
 RUN pacman --noconfirm -R go
 WORKDIR /home/arch
 
-CMD ["tail -f /dev/null"]
+CMD ["tail", "-f", "/dev/null"]
