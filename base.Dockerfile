@@ -4,7 +4,6 @@ ARG archpassword
 
 RUN useradd -m -G wheel arch
 RUN echo "arch:"${archpassword} | chpasswd
-RUN echo "xfce4-session" > /home/arch/.xinitrc
 RUN echo 'arch ALL=(ALL) ALL' >> /etc/sudoers
 
 RUN pacman-key --init

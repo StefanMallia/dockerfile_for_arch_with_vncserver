@@ -2,7 +2,9 @@ FROM arch-linux-base as arch-linux-vnc
 
 ARG vncpassword
 
-RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc firefox
+RUN pacman -S --noconfirm xorg-server xfce4 xfce4-goodies tigervnc firefox code
+
+RUN echo "xfce4-session" > /home/arch/.xinitrc
 
 USER arch
 RUN mkdir ~/.vnc
