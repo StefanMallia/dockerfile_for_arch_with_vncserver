@@ -26,7 +26,7 @@ docker run\
     --volume $PWD/docker_volume_mount:/home/arch/Base/\
     --volume $PWD/hists_and_configs/.bash_history:/home/arch/.bash_history\
     --volume $PWD/hists_and_configs/.bashrc:/home/arch/.bashrc\
-    -td -p 5901:5901 --name $CONTAINER_NAME arch-linux-vnc\
+    -td -p $PORT:5901 --name $CONTAINER_NAME arch-linux-vnc\
 
 docker exec --user=arch --workdir=/home/arch -it $CONTAINER_NAME /bin/bash
 
