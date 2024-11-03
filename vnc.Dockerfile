@@ -1,4 +1,4 @@
-FROM arch-linux-base as arch-linux-vnc
+FROM arch-linux-base AS arch-linux-vnc
 
 ARG vncpassword
 

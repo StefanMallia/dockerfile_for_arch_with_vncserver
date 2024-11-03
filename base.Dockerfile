@@ -1,4 +1,4 @@
-FROM archlinux as arch-linux-base
+FROM archlinux AS arch-linux-base
 
 ARG archpassword
 
